@@ -163,7 +163,7 @@ void UartCore::dispatch(const Frame& frame, std::uint32_t now_ms) {
     // Before identification only read requests have been sent. On 02D0 the
     // read IDs are unknown; on newer firmware do not count write ACKs.
     if (!snapshot.has_device_info ||
-        snapshot.device_info.firmware_version == kFirmware02D0 || state.request_id == 1) {
+        snapshot.device_info.firmware_version == kFirmware02D0 || snapshot.device_info.firmware_version == 0x04C7 || state.request_id == 1) {
       --state_reads_pending_;
     }
   }

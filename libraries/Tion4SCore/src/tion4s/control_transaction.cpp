@@ -79,7 +79,7 @@ bool ControlTransaction::submit(const ControlCommand& command, const Snapshot& s
     fail(ControlFailure::ContextChanged);
     return false;
   }
-  legacy_02d0_ = snapshot.device_info.firmware_version == kFirmware02D0;
+  legacy_02d0_ = snapshot.device_info.firmware_version == kFirmware02D0 || snapshot.device_info.firmware_version == 0x04C7;
   queued_ms_ = queued_ms;
   baseline_ready_ = false;
   verify_reads_ = 0;
